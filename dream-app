@@ -1,0 +1,49 @@
+const readline = require('readline-sync'); // using readline-sync to get user input, seeing in Values, Data Types, and Operations lesson
+
+let veggieQuestion1 = readline.question("What vegetables do you have? (Separate with commas) ");
+let userVeggies = veggieQuestion1.split(",").map(v => v.trim()); // split the string into an array of veggies, ideally this would be a button system instead of typed strings
+
+let fruitQuestion1 = readline.question("What fruits do you have? (Separate with commas) "); // prompting user for ingredients 
+let userFruits = fruitQuestion1.split(",").map(f => f.trim()); // split the string into an array of fruits, using map to extract the individual items and trim to remove any extra spaces
+
+let dairyQuestion1 = readline.question("What dairy products do you have? (Separate with commas) ");
+let userDairy = dairyQuestion1.split(",").map(d => d.trim()); // split the string into an array of dairy products
+
+console.log("You have the following vegetables: " + userVeggies); // the user will be able to see the ingredients they have so they can change as they add/remove
+console.log("You have the following fruits: " + userFruits);
+console.log("You have the following dairy products: " + userDairy); 
+
+console.log(userFruits); // to list out and store in an interactive menu 
+console.log(userVeggies); // using console.log to be sure they elements are displayed properly as in Control Structures and Logic
+console.log(userDairy); 
+
+let strawberrySmoothie = ["strawberries", "milk", "yogurt"]; // creating a smoothie recipe with an array as in Building Arrays
+if (userFruits.includes("strawberries") && userDairy.includes("milk") && userDairy.includes("yogurt")) { // using loops from Working With Loops to check if the user has the ingredients for the smoothie
+    console.log("You can make a strawberry smoothie!"); // if they have the ingredients, they can make the smoothie
+} else {
+    console.log("You cannot make a strawberry smoothie."); // if they don't have the ingredients, they cannot make the smoothie
+}
+
+let veggieSalad = ["lettuce", "tomatoes", "cucumbers"]; // creating a salad recipe with an array of ingredients
+if (userVeggies.includes("lettuce") && userVeggies.includes("tomatoes") && userVeggies.includes("cucumbers")) { // using loops from Working With Loops to check if the user has the ingredients for the salad
+    console.log("You can make a veggie salad!"); // if they have the ingredients, they can make the salad
+} else {
+    console.log("You cannot make a veggie salad."); // if they don't have the ingredients, they cannot make the salad
+} 
+
+let missingIngredients = []; // using .includes and .push as seen in Using Arrays to check for missing ingredients and push them to the missingIngredients array if they are not included in the user's input 
+if (!userFruits.includes("strawberries")) missingIngredients.push("strawberries"); 
+if (!userDairy.includes("milk")) missingIngredients.push("milk"); 
+if (!userDairy.includes("yogurt")) missingIngredients.push("yogurt");
+if (!userVeggies.includes("lettuce")) missingIngredients.push("lettuce");
+if (!userVeggies.includes("tomatoes")) missingIngredients.push("tomatoes");
+if (!userVeggies.includes("cucumbers")) missingIngredients.push("cucumbers");
+
+if (missingIngredients.length > 0) { // if there are missing ingredients, we will list them out for the user
+    console.log("You are missing the following ingredients: " + missingIngredients.join(", ")); // join the missing ingredients into a string and display to the user
+} else {
+    console.log("You have all the ingredients for the recipe!"); // if there are no missing ingredients, we will let the user know they can make the recipe
+}
+
+let proTip = "Pro Tip: You can substitute ingredients if you don't have the exact ones! For example, you can use blended oats instead of flour, or spinach instead of lettuce. Can I get a \"yes, chef!\"?!"; // providing a pro tip for ingredient substitutions, using escaping quotes as seen in Stringing Characters Together 
+console.log(proTip); // displaying the pro tip to the user
